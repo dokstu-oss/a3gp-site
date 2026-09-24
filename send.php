@@ -28,5 +28,14 @@ $subject = '=?UTF-8?B?' . base64_encode('Заявка с сайта АЗ ГРУ�
 $headers = "From: info@a3gp.ru\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
 $ok = mail($to, $subject, $text, $headers, '-finfo@a3gp.ru');
 
+// уведомление сотрудникам в Telegram (настройки вне папки сайта); если бот не настроен или недоступен — заявка всё равно ушла письмом
+$home = dirname(__DIR__, 2);
+if (is_file("$home/a3gp-bot.php") && is_file("$home/a3gp-tg.php")) {
+  require_once "$home/a3gp-bot.php";
+  require_once "$home/a3gp-tg.php";
+  $tg = tg_notify(null, "🔔 Новая заявка с сайта\n\n" . $text);
+  $ok = $ok || $tg;
+}
+
 http_response_code($ok ? 200 : 500);
 echo $ok ? '{"ok":true}' : '{"ok":false}';
