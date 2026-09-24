@@ -536,7 +536,7 @@ footer{padding-top:72px}
         <li>Без спама и навязчивых звонков</li>
       </ul>
     </div>
-    <form class="lead-form" id="lead-form" action="mailto:info@az-group.ru?subject=Заявка с сайта АЗ ГРУПП" method="post" enctype="text/plain">
+    <form class="lead-form" id="lead-form" action="mailto:info@a3gp.ru?subject=Заявка с сайта АЗ ГРУПП" method="post" enctype="text/plain">
       <div class="f2">
         <div class="field"><label for="l-name">Имя</label><input id="l-name" name="Имя" type="text" autocomplete="name" required placeholder="Как к вам обращаться"></div>
         <div class="field"><label for="l-phone">Телефон</label><input id="l-phone" name="Телефон" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+7 900 000-00-00" pattern="[0-9+ \(\)\-]{10,20}"></div>
@@ -545,6 +545,7 @@ footer{padding-top:72px}
       <div class="field"><label for="l-msg">Комментарий</label><textarea id="l-msg" name="Комментарий" rows="3" placeholder="Что поставляете, в каких регионах, какой нужен результат"></textarea></div>
       <label class="check"><input id="l-calc" type="checkbox" checked> Приложить расчёт из калькулятора</label>
       <label class="check"><input id="l-agree" type="checkbox" required> Согласен на обработку персональных данных</label>
+<input id="l-web" name="website" type="text" tabindex="-1" autocomplete="off" hidden>
       <div class="f-actions">
         <button class="btn btn-b" type="submit">Отправить заявку</button>
         <button class="btn btn-o" type="button" id="l-wa">Отправить в WhatsApp</button>
@@ -603,7 +604,7 @@ footer{padding-top:72px}
   <div class="row-b">
     <a class="btn btn-b" href="https://t.me/">Написать в Telegram</a>
     <a class="btn btn-o" href="tel:+79001234567">+7 900 123-45-67</a>
-    <a class="btn btn-o" href="mailto:info@az-group.ru">info@az-group.ru</a>
+    <a class="btn btn-o" href="mailto:info@a3gp.ru">info@a3gp.ru</a>
   </div>
 </section>
 </div>
@@ -619,7 +620,7 @@ footer{padding-top:72px}
       <div class="f-cols">
         <div><span class="caps">Услуги</span><ul><li><a href="#services">Тендерное сопровождение</a></li><li><a href="#services">Аналитика</a></li><li><a href="#services">Банковские гарантии</a></li><li><a href="#services">Юридическое сопровождение</a></li></ul></div>
         <div><span class="caps">Компания</span><ul><li><a href="#stages">Этапы работы</a></li><li><a href="#plans">Тарифы</a></li><li><a href="#faq">Вопросы</a></li><li><a href="#calc">Калькулятор</a></li></ul></div>
-        <div><span class="caps">Контакты</span><ul><li><a href="tel:+79001234567">+7 900 123-45-67</a></li><li><a href="mailto:info@az-group.ru">info@az-group.ru</a></li><li><a href="https://t.me/">Telegram</a></li><li>az-group.ru</li></ul></div>
+        <div><span class="caps">Контакты</span><ul><li><a href="tel:+79001234567">+7 900 123-45-67</a></li><li><a href="mailto:info@a3gp.ru">info@a3gp.ru</a></li><li><a href="https://t.me/">Telegram</a></li><li>az-group.ru</li></ul></div>
       </div>
     </div>
     <div class="f-bot"><span>Политика конфиденциальности · ИНН 0000000000</span><span>© 2026 АЗ ГРУПП. Больше, чем тендеры.</span></div>
@@ -661,8 +662,7 @@ $('nmck').addEventListener('blur', e => {
 calc();
 
 // обратная связь: собираем заявку и открываем почту или WhatsApp
-// ponytail: без сервера заявка уходит через почтовое приложение/WhatsApp клиента; для приёма в Telegram-бот нужен бэкенд
-const LEAD_EMAIL = 'info@az-group.ru', LEAD_WA = '79001234567';
+const LEAD_EMAIL = 'info@a3gp.ru', LEAD_WA = '79001234567';
 function leadText() {
   const v = id => $(id).value.trim();
   let t = 'Заявка с сайта АЗ ГРУПП\n\nИмя: ' + v('l-name') + '\nТелефон: ' + v('l-phone');
@@ -677,10 +677,20 @@ function leadSend(e, via) {
   const f = $('lead-form'), st = $('l-status');
   if (!f.reportValidity()) { st.className = 'f-status err'; st.textContent = 'Заполните имя, телефон и подтвердите согласие.'; return; }
   const text = leadText();
-  if (via === 'wa') window.open('https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-  else location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent('Заявка с сайта АЗ ГРУПП') + '&body=' + encodeURIComponent(text);
   st.className = 'f-status';
-  st.textContent = via === 'wa' ? 'Открыли WhatsApp с готовым сообщением — нажмите «Отправить».' : 'Открыли почту с готовым письмом — нажмите «Отправить».';
+  if (via === 'wa') {
+    window.open('https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    st.textContent = 'Открыли WhatsApp с готовым сообщением — нажмите «Отправить».';
+    return;
+  }
+  st.textContent = 'Отправляем…';
+  // заявка уходит на почту через send.php; если его нет (превью без PHP) — открываем почтовое приложение
+  fetch('send.php', { method: 'POST', body: new URLSearchParams({ name: $('l-name').value.trim(), phone: $('l-phone').value.trim(), text, website: $('l-web').value }) })
+    .then(r => { if (!r.ok) throw 0; f.reset(); st.textContent = 'Спасибо! Заявка отправлена, мы скоро свяжемся с вами.'; })
+    .catch(() => {
+      location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent('Заявка с сайта АЗ ГРУПП') + '&body=' + encodeURIComponent(text);
+      st.textContent = 'Открыли почту с готовым письмом — нажмите «Отправить».';
+    });
 }
 $('lead-form').addEventListener('submit', e => leadSend(e, 'mail'));
 $('l-wa').addEventListener('click', () => leadSend(null, 'wa'));
