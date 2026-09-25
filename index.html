@@ -100,9 +100,6 @@ header .btn{padding:11px 20px;font-size:13px}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 /* блик и свечение работают всегда; при «Уменьшении движения» отключаем только покачивание */
 @media (prefers-reduced-motion:reduce){.hero-mark{animation:none}}
-.verbs{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:72px;padding-block:22px;border-block:1px solid var(--line-d);color:var(--muted-d)}
-.verbs span{display:flex;align-items:center;gap:14px}
-.verbs span:not(:last-child)::after{content:"";width:28px;height:1px;background:var(--blue)}
 
 /* демо-панель */
 .tabs-head{text-align:center;margin-top:84px}
@@ -113,8 +110,8 @@ header .btn{padding:11px 20px;font-size:13px}
 .tab-r{position:fixed;top:0;left:0;opacity:0;width:1px;height:1px;pointer-events:none}
 #r1:checked ~ .wrap label[for=r1],#r2:checked ~ .wrap label[for=r2],#r3:checked ~ .wrap label[for=r3]{color:var(--white);border-bottom-color:var(--blue)}
 #r1:focus-visible ~ .wrap label[for=r1],#r2:focus-visible ~ .wrap label[for=r2],#r3:focus-visible ~ .wrap label[for=r3]{outline:2px solid var(--cyan);outline-offset:-2px}
-.stage{position:relative;margin:32px auto 0;max-width:1000px;border-radius:14px;background:var(--panel);padding:52px 40px;min-height:380px}
-.pane{display:none;grid-template-columns:1fr 1fr;gap:20px;align-items:start;color:var(--ink);font-size:13.5px}
+.stage{position:relative;margin:32px auto 0;max-width:1180px;border-radius:14px;background:var(--panel);padding:52px 40px;min-height:380px}
+.pane{display:none;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;color:var(--ink);font-size:13.5px}
 #r1:checked ~ .stage #p1,#r2:checked ~ .stage #p2,#r3:checked ~ .stage #p3{display:grid}
 .card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(11,31,59,.5)}
 .card-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line-l)}
@@ -147,41 +144,6 @@ section{padding-block:110px}
 .sec-h p{margin:0;max-width:460px;color:var(--muted-l)}
 .dark .sec-h p,.navy .sec-h p{color:var(--muted-d)}
 
-/* партнёр + цифры */
-.partner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.partner h2{font-size:clamp(32px,4.4vw,52px);margin-top:16px}
-.partner p{color:var(--muted-l);margin:22px 0 0;max-width:500px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-l);border:1px solid var(--line-l);border-radius:12px;overflow:hidden}
-.stat{background:var(--white);padding:30px 26px}
-.stat b{display:block;font:700 clamp(40px,5vw,56px)/1 var(--sans);color:var(--navy);letter-spacing:-.02em}
-.stat b em{font-style:normal;color:var(--blue)}
-.stat span{display:block;margin-top:10px;font-size:14px;color:var(--muted-l)}
-
-/* 7 направлений */
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc{border:1px solid var(--line-d);border-radius:12px;padding:26px 22px;background:linear-gradient(160deg,rgba(0,102,255,.08),rgba(255,255,255,.01) 60%);display:flex;flex-direction:column;gap:14px;transition:border-color .25s,transform .25s}
-.svc:hover{border-color:rgba(0,180,255,.5);transform:translateY(-2px)}
-.ico{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--blue);display:grid;place-items:center;color:var(--cyan);box-shadow:0 0 18px rgba(0,102,255,.35)}
-.ico svg{width:24px;height:24px}
-.svc h3{font-size:17px;font-weight:600;line-height:1.3}
-.svc p{margin:0;color:var(--muted-d);font-size:14px}
-.svc.cta-card{background:var(--blue-grad);border:0;justify-content:space-between}
-.svc.cta-card h3{font-size:20px}
-.svc.cta-card p{color:rgba(255,255,255,.85)}
-.svc.cta-card .btn{background:var(--white);color:var(--navy);align-self:flex-start}
-
-/* таймлайн */
-.timeline{position:relative;list-style:none;margin:0 auto;padding:0;max-width:920px}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(var(--blue),var(--cyan))}
-.timeline li{position:relative;width:50%;padding:0 52px 44px}
-.timeline li:nth-child(odd){margin-left:50%}
-.timeline li:nth-child(even){text-align:right}
-.timeline li::before{content:"";position:absolute;top:4px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--blue)}
-.timeline li:nth-child(odd)::before{left:-7px}
-.timeline li:nth-child(even)::before{right:-7px}
-.timeline .caps{color:var(--blue);font-size:10px}
-.timeline h3{font-size:18px;margin:6px 0}
-.timeline p{margin:0;color:var(--muted-l);font-size:14.5px}
 
 /* калькулятор */
 .calc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-l);border-radius:14px;overflow:hidden;background:var(--white)}
@@ -216,6 +178,12 @@ section{padding-block:110px}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--muted-l);cursor:pointer}
 .check input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--blue);flex:none}
 .f-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.f-alt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--muted-l)}
+.f-alt .btn{padding:10px 18px}
+/* логотипы мессенджеров в кнопках */
+.mi{width:18px;height:18px;flex:none}
+.mi-wa{color:#25D366}.mi-tg{color:#2AABEE}
+.btn-b .mi{color:var(--white)}
 .f-status{margin:0;font-size:13.5px;color:#11915A;min-height:1em}
 .f-status.err{color:#D9622B}
 
@@ -246,11 +214,6 @@ summary::after{content:"+";font:400 26px/1 var(--sans);color:var(--blue);transit
 details[open] summary::after{transform:rotate(45deg)}
 details p{margin:12px 0 0;color:var(--muted-l);max-width:66ch}
 
-/* CTA */
-.cta{text-align:center;padding-block:120px}
-.cta h2{font-size:clamp(34px,5.4vw,64px)}
-.cta p{color:var(--muted-d);margin:22px auto 34px;max-width:540px}
-.cta .row-b{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* подвал */
 footer{padding-top:72px}
@@ -260,37 +223,72 @@ footer{padding-top:72px}
 .f-cols .caps{font-size:10px;color:var(--muted-d)}
 .f-cols ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;font-size:14px}
 .f-cols a{text-decoration:none}.f-cols a:hover{color:var(--cyan)}
+.f-contacts a{display:inline-flex;align-items:center;gap:10px}
+.f-contacts .mi{width:16px;height:16px}
 .f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:20px;font-size:12.5px;color:var(--muted-d)}
 .wordmark{font:700 clamp(40px,15vw,230px)/.8 var(--sans);letter-spacing:.02em;color:rgba(192,198,209,.05);white-space:nowrap;text-align:center;margin-top:10px;user-select:none}
+
+
+/* CTA */
+.cta{text-align:center;padding-block:120px}
+.cta h2{font-size:clamp(34px,5.4vw,64px)}
+.cta p{color:var(--muted-d);margin:22px auto 34px;max-width:540px}
+.cta .row-b{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta .btn-call{padding:16px 40px;font-size:15px}
+.cta .cta-or{font-size:13.5px;color:var(--muted-d);margin:26px auto 14px}
+.mi-mail{color:var(--cyan)}
+
+/* сквозная панель соцсетей справа */
+.social{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:40;display:grid;gap:10px}
+.social a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(11,31,59,.88);border:1px solid rgba(0,180,255,.35);color:var(--white);box-shadow:0 10px 24px -12px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .2s,transform .2s}
+/* при наведении — фирменный цвет соцсети */
+.social a{position:relative;overflow:hidden}
+.social a::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--brand,var(--blue));opacity:0;transition:opacity .3s}
+.social a:hover,.social a:focus-visible{transform:translateX(-3px) scale(1.08);border-color:transparent}
+.social a:hover::before,.social a:focus-visible::before{opacity:1}
+.social svg{position:relative}
+.s-ig{--brand:radial-gradient(circle at 30% 107%,#FDF497 0%,#FDF497 5%,#FD5949 45%,#D6249F 60%,#285AEB 90%)}
+.s-dz{--brand:#000}
+.s-vk{--brand:#0077FF}
+.s-tg{--brand:#2AABEE}
+.social svg{width:22px;height:22px}
+.ig-note{font-size:11px;color:var(--muted-d);margin:0 0 16px}
 
 @media (max-width:1000px){
   header{flex-wrap:wrap;row-gap:4px}
   nav{order:3;width:100%;justify-content:space-between;gap:10px;overflow-x:auto;white-space:nowrap;padding-block:6px 2px;font-size:12.5px;scrollbar-width:none}
   nav::-webkit-scrollbar{display:none}
   [id]{scroll-margin-top:124px}
-  .services{grid-template-columns:1fr 1fr}
   .plans{grid-template-columns:1fr}
+  .pane{grid-template-columns:1fr 1fr}
+  .pane .card:last-child{grid-column:1/-1}
 }
 @media (max-width:860px){
-  .hero-grid,.partner,.sec-h,.f-top{grid-template-columns:1fr}
-  .hero-mark{justify-self:center;max-width:260px}
+  .hero-grid,.sec-h,.f-top{grid-template-columns:1fr}
+  .hero-mark{display:none}
   .hero{padding-top:48px}
-  .verbs{justify-content:center}
-  .verbs span:not(:last-child)::after{display:none}
 }
 @media (max-width:720px){
   .pane,.calc{grid-template-columns:1fr}
+  .pane .card:last-child{grid-column:auto}
   .stage{padding:22px 12px}
   .calc form{border-right:0;border-bottom:1px solid var(--line-l)}
   .calc form,.result{padding:24px}
   .lead{grid-template-columns:1fr;padding:24px;gap:28px;margin-top:40px}
   .f2{grid-template-columns:1fr}
-  .f-actions .btn{width:100%;justify-content:center}
+  .f-actions .btn{width:100%;justify-content:center;white-space:normal;text-align:center}
+  .lead>*{min-width:0}
+  .cta .btn-call{width:100%;justify-content:center}
+  .row-msg{display:grid!important;grid-template-columns:1fr 1fr}
+  .row-msg .btn{justify-content:center}
+  .f-alt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .f-alt span{grid-column:1/-1}
+  .f-alt .btn{flex-direction:column;gap:6px;padding:10px 4px;font-size:12.5px;justify-content:center}
+  .f-alt .mi{width:22px;height:22px}
+  .social{top:auto;bottom:16px;transform:none;right:10px;gap:8px}
+  .social a{width:40px;height:40px}
+  .social svg{width:19px;height:19px}
   section{padding-block:80px}
-  .timeline::before{left:7px}
-  .timeline li,.timeline li:nth-child(odd){width:auto;margin-left:0;padding:0 0 34px 36px;text-align:left}
-  .timeline li:nth-child(even){text-align:left}
-  .timeline li::before,.timeline li:nth-child(odd)::before,.timeline li:nth-child(even)::before{left:0;right:auto}
 }
 @media (max-width:560px){
   header{gap:10px}
@@ -299,12 +297,11 @@ footer{padding-top:72px}
   .wm b{font-size:16px}
   .wm small{font-size:6.5px;letter-spacing:.22em}
   header .btn{padding:9px 12px;font-size:12px}
-  .services,.f-cols{grid-template-columns:1fr}
   .card-h{flex-wrap:wrap}
   .lot{grid-template-columns:auto 1fr}
   .lot .sum{grid-column:2}
   .tab{padding:12px 12px;font-size:13px}
-  .stat{padding:22px 18px}
+  .f-cols{grid-template-columns:1fr}
 }
 </style>
 
@@ -312,6 +309,7 @@ footer{padding-top:72px}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="az-silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F6F8"/><stop offset=".55" stop-color="#9CA6B5"/><stop offset="1" stop-color="#E5E9EF"/></linearGradient>
+    <linearGradient id="max-g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#00EAFF"/><stop offset=".5" stop-color="#3C22FE"/><stop offset="1" stop-color="#8419FF"/></linearGradient>
     <linearGradient id="az-blue" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00B4FF"/><stop offset="1" stop-color="#0066FF"/></linearGradient>
     <symbol id="az" viewBox="0 0 124 76">
       <polygon points="0,76 38,0 53,0 15,76" fill="url(#az-silver)"/>
@@ -329,8 +327,6 @@ footer{padding-top:72px}
 <header>
   <a class="brand" href="#top" aria-label="АЗ ГРУПП, на главную"><svg class="mark" viewBox="0 0 124 76"><use href="#az"/></svg><span class="div"></span><span class="wm"><b>АЗ ГРУПП</b><small>Тендеры под контролем</small></span></a>
   <nav>
-    <a href="#services">Услуги</a>
-    <a href="#stages">Этапы</a>
     <a href="#calc">Калькулятор</a>
     <a href="#plans">Тарифы</a>
     <a href="#faq">Вопросы</a>
@@ -366,10 +362,6 @@ footer{padding-top:72px}
       </div>
     </div>
 
-    <div class="verbs caps" aria-label="Что мы делаем">
-      <span>Анализируем</span><span>Находим</span><span>Сопровождаем</span><span>Гарантируем</span><span>Оптимизируем</span>
-    </div>
-
     <div class="tabs-head">
       <span class="caps blue-t">Как это выглядит</span>
       <h2>Каждый лот — под контролем</h2>
@@ -398,6 +390,16 @@ footer{padding-top:72px}
           <div><span>Сумма НМЦК</span><b>19,4 млн ₽</b></div>
         </div>
       </div>
+      <div class="card">
+        <div class="card-h"><h3>Ваш профиль</h3><span class="chip b">Фильтр</span></div>
+        <div class="kv">
+          <div><span>ОКПД2</span><b>26.20, 27.90</b></div>
+          <div><span>Регионы</span><b>ПФО, Москва</b></div>
+          <div><span>НМЦК</span><b>1–10 млн ₽</b></div>
+          <div><span>Закон</span><b>44‑ФЗ, 223‑ФЗ</b></div>
+          <div><span>Площадки</span><b>8 ЭТП</b></div>
+        </div>
+      </div>
     </div>
 
     <div class="pane" id="p2">
@@ -415,6 +417,16 @@ footer{padding-top:72px}
         <div class="step"><div><span class="caps">Шаг 2</span><b>Финансист</b><small>Обеспечение 1 % и 5 %</small></div><span class="st ok">✓ гарантия</span></div>
         <div class="step"><div><span class="caps">Шаг 3</span><b>Тендерный менеджер</b><small>Срок поставки 10 дней</small></div><span class="st warn">риск</span></div>
         <div class="card-f">Подготовить заявку</div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Заказчик</h3><span class="chip b">Проверен</span></div>
+        <div class="kv">
+          <div><span>Контрактов за год</span><b>148</b></div>
+          <div><span>Оплата в срок</span><b style="color:#11915A">97 %</b></div>
+          <div><span>Средний срок оплаты</span><b>11 дней</b></div>
+          <div><span>Жалобы в ФАС</span><b>0</b></div>
+          <div><span>Аванс</span><b>нет</b></div>
+        </div>
       </div>
     </div>
 
@@ -442,65 +454,15 @@ footer{padding-top:72px}
         </div>
         <div class="card-f">Подписать контракт</div>
       </div>
+      <div class="card">
+        <div class="card-h"><h3>Контракт</h3><span class="chip">до 07.10</span></div>
+        <div class="step"><div><span class="caps">Шаг 1</span><b>Гарантия</b><small>235 708 ₽ · 5 %</small></div><span class="st ok">✓ в реестре</span></div>
+        <div class="step"><div><span class="caps">Шаг 2</span><b>Подписание</b><small>ЭП в ЕИС</small></div><span class="st ok">✓ в срок</span></div>
+        <div class="step"><div><span class="caps">Шаг 3</span><b>Поставка</b><small>10 рабочих дней</small></div><span class="st warn">контроль</span></div>
+        <div class="card-f">Исполнить контракт</div>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="band white">
-<section class="wrap partner">
-  <div>
-    <span class="caps blue-t">О компании</span>
-    <h2>Ваш надёжный партнёр в сфере закупок</h2>
-    <p>Мы не просто находим тендеры. Мы управляем всей цепочкой закупочного процесса — от анализа рынка до исполнения контракта. Один ответственный менеджер, еженедельный отчёт и честный вердикт по каждому лоту.</p>
-  </div>
-  <div class="stats">
-    <div class="stat"><b>7</b><span>направлений работы</span></div>
-    <div class="stat"><b>0 <em>₽</em></b><span>разбор первой закупки</span></div>
-    <div class="stat"><b>24 <em>ч</em></b><span>на экспертизу лота</span></div>
-    <div class="stat"><b>1</b><span>менеджер на все ваши тендеры</span></div>
-  </div>
-</section>
-</div>
-
-<div class="band navy">
-  <div class="stripes" aria-hidden="true" style="left:-80px;bottom:0;width:360px;height:320px">
-    <i style="left:120px;bottom:0;width:70px;height:260px;background:linear-gradient(0deg,rgba(0,102,255,0),rgba(0,102,255,.3) 45%,rgba(0,102,255,0))"></i>
-  </div>
-<section class="wrap" id="services">
-  <div class="sec-h">
-    <div><span class="caps blue-t">Наши услуги</span><h2>7 направлений для вашего бизнеса</h2></div>
-    <p>Подключайте всё сразу или только нужное. Каждое направление ведёт профильный специалист.</p>
-  </div>
-  <div class="services">
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 12l2 2 4-4M9 17h6"/></svg></span><h3>Комплексное тендерное сопровождение</h3><p>Весь цикл: от подготовки к старту до подписания контракта.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-4M11 16V8M15 16v-6M19 16V5"/></svg></span><h3>Аналитика тендерного рынка и заказчика</h3><p>Ёмкость рынка, платёжеспособность заказчика, конкуренты, типичное снижение.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Юридическое сопровождение</h3><p>Разъяснения, протоколы разногласий, жалобы в ФАС, защита от РНП.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18"/></svg></span><h3>Банковские гарантии</h3><p>Гарантии с проверкой по реестру, тендерные займы, факторинг.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><h3>Ручная подборка закупок</h3><p>Отбираем лоты по вашим ОКПД2, регионам и суммам, включая коммерческие площадки.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/><path d="M14 3l5 5h-5zM8 9h3M8 13h6"/><circle cx="17" cy="16" r="3"/><path d="M15.5 18.5V22l1.5-1 1.5 1v-3.5"/></svg></span><h3>Сертификация и лицензирование</h3><p>Допуски СРО, ISO, лицензии и сертификаты, которые требуют заказчики.</p></div>
-    <div class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14c2.8 0 5 2.2 5 5"/></svg></span><h3>Аудит штатного тендерного отдела</h3><p>Проверим процессы и ошибки, дадим план повышения процента побед.</p></div>
-    <div class="svc cta-card"><div><h3>Не знаете, с чего начать?</h3><p style="margin-top:10px">Пришлите номер извещения — бесплатно оценим шансы и риски.</p></div><a class="btn" href="#lead">Оставить заявку</a></div>
-  </div>
-</section>
-</div>
-
-<div class="band light">
-<section class="wrap" id="stages">
-  <div class="sec-h">
-    <div><span class="caps blue-t">Комплексное сопровождение</span><h2>Восемь этапов. Один ответственный.</h2></div>
-    <p>Каждый шаг закупки за нами — от подготовки к первому тендеру до оплаты по контракту.</p>
-  </div>
-  <ol class="timeline">
-    <li><span class="caps">Этап 1</span><h3>Подготовка к старту</h3><p>Электронная подпись, ЕИС, аккредитация на площадках, спецсчёт и рабочее место.</p></li>
-    <li><span class="caps">Этап 2</span><h3>Подбор торгов</h3><p>Вручную отбираем лоты по вашим ОКПД2, регионам и суммам.</p></li>
-    <li><span class="caps">Этап 3</span><h3>Экспертиза лота</h3><p>ТЗ, проект контракта, штрафы, платёжеспособность заказчика. Честно скажем, если лот «под своего».</p></li>
-    <li><span class="caps">Этап 4</span><h3>Заявка</h3><p>Документы, декларации и характеристики товара строго по форме заказчика.</p></li>
-    <li><span class="caps">Этап 5</span><h3>Финансы</h3><p>Банковская гарантия с проверкой по реестру, тендерный займ, факторинг.</p></li>
-    <li><span class="caps">Этап 6</span><h3>Торги</h3><p>Ведём ставки от вашего имени до согласованного минимума.</p></li>
-    <li><span class="caps">Этап 7</span><h3>Контракт</h3><p>Протокол разногласий, контроль сроков подписания, чтобы не попасть в РНП.</p></li>
-    <li><span class="caps">Этап 8</span><h3>Исполнение и защита</h3><p>Приёмка, оплата, казначейские расчёты. При нарушениях — ФАС, претензии, суд.</p></li>
-  </ol>
-</section>
 </div>
 
 <div class="band white">
@@ -547,8 +509,13 @@ footer{padding-top:72px}
       <label class="check"><input id="l-agree" type="checkbox" required> Согласен на обработку <a href="privacy.html" target="_blank">персональных данных</a></label>
 <input id="l-web" name="website" type="text" tabindex="-1" autocomplete="off" hidden>
       <div class="f-actions">
-        <button class="btn btn-b" type="submit">Отправить заявку</button>
-        <button class="btn btn-o" type="button" id="l-wa">Отправить в WhatsApp</button>
+        <button class="btn btn-b" type="submit">Отправить заявку — мы вам перезвоним</button>
+      </div>
+      <div class="f-alt">
+        <span>или напишите нам в</span>
+        <button class="btn btn-o" type="button" id="l-wa"><svg class="mi mi-wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</button>
+        <button class="btn btn-o" type="button" id="l-tg"><svg class="mi mi-tg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</button>
+        <button class="btn btn-o" type="button" id="l-max"><svg class="mi" viewBox="0 0 100 100" aria-hidden="true"><path fill="url(#max-g)" fill-rule="evenodd" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg>MAX</button>
       </div>
       <p class="f-status" id="l-status" role="status"></p>
     </form>
@@ -591,7 +558,6 @@ footer{padding-top:72px}
   </div>
 </section>
 </div>
-
 <div class="band dark" id="contact">
   <div class="stripes" aria-hidden="true" style="inset:0">
     <i style="left:8%;top:-20%;width:120px;height:140%;background:linear-gradient(180deg,rgba(0,102,255,0),rgba(0,102,255,.18) 55%,rgba(0,102,255,0))"></i>
@@ -602,9 +568,14 @@ footer{padding-top:72px}
   <h2 style="margin-top:18px">Больше, чем тендеры.<br>Мы управляем возможностями.</h2>
   <p>Оставьте заявку и получите бесплатную консультацию эксперта: оценим шансы, риски и сумму обеспечения по первой закупке.</p>
   <div class="row-b">
-    <a class="btn btn-b" href="https://wa.me/79871205565">Написать в WhatsApp</a>
-    <a class="btn btn-o" href="tel:+79871205565">+7 987 120-55-65</a>
-    <a class="btn btn-o" href="mailto:info@a3gp.ru">info@a3gp.ru</a>
+    <a class="btn btn-b btn-call" href="tel:+79871205565"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Позвонить</a>
+  </div>
+  <p class="cta-or">или напишите нам</p>
+  <div class="row-b row-msg">
+    <a class="btn btn-o" href="https://wa.me/79871205565"><svg class="mi mi-wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a>
+    <a class="btn btn-o tg-link" href="#"><svg class="mi mi-tg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
+    <a class="btn btn-o max-link" href="#"><svg class="mi" viewBox="0 0 100 100" aria-hidden="true"><path fill="url(#max-g)" fill-rule="evenodd" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg><span>MAX</span></a>
+    <a class="btn btn-o" href="mailto:info@a3gp.ru"><svg class="mi mi-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Почта</a>
   </div>
 </section>
 </div>
@@ -618,15 +589,23 @@ footer{padding-top:72px}
         <div class="slogan">Ваш надёжный партнёр<br><span class="blue-t">в сфере закупок</span></div>
       </div>
       <div class="f-cols">
-        <div><span class="caps">Услуги</span><ul><li><a href="#services">Тендерное сопровождение</a></li><li><a href="#services">Аналитика</a></li><li><a href="#services">Банковские гарантии</a></li><li><a href="#services">Юридическое сопровождение</a></li></ul></div>
-        <div><span class="caps">Компания</span><ul><li><a href="#stages">Этапы работы</a></li><li><a href="#plans">Тарифы</a></li><li><a href="#faq">Вопросы</a></li><li><a href="#calc">Калькулятор</a></li></ul></div>
-        <div><span class="caps">Контакты</span><ul><li><a href="tel:+79871205565">+7 987 120-55-65</a></li><li><a href="mailto:info@a3gp.ru">info@a3gp.ru</a></li><li><a href="https://wa.me/79871205565">WhatsApp</a></li><li>a3gp.ru</li></ul></div>
+        <div><span class="caps">Услуги</span><ul><li><a href="#plans">Тендерное сопровождение</a></li><li><a href="#plans">Аналитика</a></li><li><a href="#plans">Банковские гарантии</a></li><li><a href="#plans">Юридическое сопровождение</a></li></ul></div>
+        <div><span class="caps">Компания</span><ul><li><a href="#plans">Тарифы</a></li><li><a href="#faq">Вопросы</a></li><li><a href="#calc">Калькулятор</a></li></ul></div>
+        <div><span class="caps">Контакты</span><ul class="f-contacts"><li><a href="tel:+79871205565"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+7 987 120-55-65</a></li><li><a href="https://wa.me/79871205565"><svg class="mi mi-wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a></li><li><a class="tg-link" href="#"><svg class="mi mi-tg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a></li><li><a class="max-link" href="#"><svg class="mi" viewBox="0 0 100 100" aria-hidden="true"><path fill="url(#max-g)" fill-rule="evenodd" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg><span>MAX</span></a></li><li><a href="mailto:info@a3gp.ru"><svg class="mi mi-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@a3gp.ru</a></li></ul></div>
       </div>
     </div>
+    <p class="ig-note">* Instagram принадлежит компании Meta, признанной экстремистской и запрещённой в РФ.</p>
     <div class="f-bot"><span><a href="privacy.html">Политика конфиденциальности</a></span><span>© 2026 АЗ ГРУПП. Больше, чем тендеры.</span></div>
     <div class="wordmark" aria-hidden="true">АЗ ГРУПП</div>
   </div>
 </footer>
+<!-- ссылки на соцсети вставить вместо # -->
+<aside class="social" aria-label="Мы в соцсетях">
+  <a href="#" target="_blank" rel="noopener" aria-label="Instagram*" class="s-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="#" target="_blank" rel="noopener" aria-label="Дзен" class="s-dz"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c.2 6 4.9 10.8 11 11-6.1.2-10.8 5-11 11-.2-6-4.9-10.8-11-11 6.1-.2 10.8-5 11-11z"/></svg></a>
+  <a href="#" target="_blank" rel="noopener" aria-label="ВКонтакте" class="s-vk"><svg viewBox="2.5 2.5 19 19" fill="currentColor"><path d="M6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"/></svg></a>
+  <a class="tg-link s-tg" href="#" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="4 4 16 16" fill="currentColor"><path d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</aside>
 
 <script>
 // калькулятор обеспечения
@@ -663,6 +642,16 @@ calc();
 
 // обратная связь: собираем заявку и открываем почту или WhatsApp
 const LEAD_EMAIL = 'info@a3gp.ru', LEAD_WA = '79871205565';
+const LEAD_TG = '+79871205565'; // Telegram по номеру (запасной вариант — ник aayven)
+// MAX не открывает чат по номеру — личная ссылка из приложения (Профиль → Поделиться); без неё копируем номер
+const LEAD_MAX = 'https://max.ru/u/f9LHodD0cOJHZOu6pI1iV_iIh2gc9KYTUdzjGu1leZJE_YGUr5U6Ziq9R0E', LEAD_PHONE = '+7 987 120-55-65';
+function maxOpen(text) {
+  if (navigator.clipboard) navigator.clipboard.writeText(LEAD_MAX ? text : LEAD_PHONE).catch(() => {});
+  if (!LEAD_MAX) return 'Номер ' + LEAD_PHONE + ' скопирован — найдите нас в MAX по номеру.';
+  window.open(LEAD_MAX, '_blank', 'noopener');
+  return 'Открыли MAX, текст скопирован — вставьте его в чат.';
+}
+if (LEAD_TG) document.querySelectorAll('.tg-link').forEach(a => a.href = 'https://t.me/' + LEAD_TG);
 function leadText() {
   const v = id => $(id).value.trim();
   let t = 'Заявка с сайта АЗ ГРУПП\n\nИмя: ' + v('l-name') + '\nТелефон: ' + v('l-phone');
@@ -675,12 +664,21 @@ function leadText() {
 function leadSend(e, via) {
   if (e) e.preventDefault();
   const f = $('lead-form'), st = $('l-status');
-  if (!f.reportValidity()) { st.className = 'f-status err'; st.textContent = 'Заполните имя, телефон и подтвердите согласие.'; return; }
-  const text = leadText();
+  const filled = $('l-name').value.trim() && $('l-phone').value.trim();
+  // в WhatsApp/Telegram пишем и без формы: заполнена — шлём заявку, нет — просто открываем чат
+  if (!via && !f.reportValidity()) { st.className = 'f-status err'; st.textContent = 'Заполните имя, телефон и подтвердите согласие.'; return; }
+  const text = (!via || filled) ? leadText() : 'Здравствуйте! Пишу с сайта АЗ ГРУПП.';
   st.className = 'f-status';
   if (via === 'wa') {
     window.open('https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
     st.textContent = 'Открыли WhatsApp с готовым сообщением — нажмите «Отправить».';
+    return;
+  }
+  if (via === 'max') { st.textContent = maxOpen(text); return; }
+  if (via === 'tg') {
+    if (!LEAD_TG) { st.textContent = 'Telegram скоро подключим — пока отправьте заявку или напишите в WhatsApp.'; return; }
+    window.open('https://t.me/' + LEAD_TG + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    st.textContent = 'Открыли Telegram с готовым сообщением — нажмите «Отправить».';
     return;
   }
   st.textContent = 'Отправляем…';
@@ -692,6 +690,16 @@ function leadSend(e, via) {
       st.textContent = 'Открыли почту с готовым письмом — нажмите «Отправить».';
     });
 }
-$('lead-form').addEventListener('submit', e => leadSend(e, 'mail'));
+$('lead-form').addEventListener('submit', e => leadSend(e));
 $('l-wa').addEventListener('click', () => leadSend(null, 'wa'));
+$('l-tg').addEventListener('click', () => leadSend(null, 'tg'));
+$('l-max').addEventListener('click', () => leadSend(null, 'max'));
+// со ссылкой — обычные ссылки на чат; без неё — копируем номер
+if (LEAD_MAX) document.querySelectorAll('.max-link').forEach(a => { a.href = LEAD_MAX; a.target = '_blank'; a.rel = 'noopener'; });
+else document.querySelectorAll('.max-link').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const s = a.querySelector('span'), old = s.textContent;
+  s.textContent = maxOpen('Здравствуйте! Пишу с сайта АЗ ГРУПП.').startsWith('Номер') ? 'Номер скопирован' : 'Текст скопирован';
+  setTimeout(() => s.textContent = old, 4000);
+}));
 </script>
